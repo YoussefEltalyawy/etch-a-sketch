@@ -1,11 +1,20 @@
 const mainGrid = document.querySelector('.main-grid');
-function createGrid() {
-  for(let i = 0; i < 256; i++) {
-    // mainGrid.appendChild(document.createElement('div'));
-    let gridSquares = document.createElement('div');
+let gridSquares;
+
+// function startAll () {
+
+// }
+
+let sps = 256;
+function initialzingGrid() {
+  for(let i = 0; i < sps; i++) {
+    gridSquares = document.createElement('div');
     gridSquares.className = 'grid-squares';
     mainGrid.appendChild(gridSquares);
-    console.log('created')
+    gridSquares.addEventListener('mouseover', function() {
+      this.style.backgroundColor = 'pink';
+    });
   }
+  
 }
-createGrid();
+initialzingGrid();

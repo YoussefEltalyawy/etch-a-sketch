@@ -1,19 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: cadetblue;
+  background-color: rgb(95, 120, 160);
+  display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
+
 .main-grid {
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-gap: 5px; 
-  border: 1px solid black; 
-  width: 700px;
-  /* margin: 5px; */
-  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(234, 234, 234);
+  width: 480px;
+  height: 480px;
 }
+
 .grid-squares {
-  width: 30px;
-  height: 30px;
-  border: 1px solid black;
-  display: inline-block;
+  width: calc(480px/ 16);
+  height: calc(480px/ 16);
 }
