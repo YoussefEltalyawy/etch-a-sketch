@@ -1,0 +1,19 @@
+body {
+  background-color: cadetblue;
+  align-items: center;
+}
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-gap: 5px; 
+  border: 1px solid black; 
+  width: 700px;
+  /* margin: 5px; */
+  padding: 5px;
+}
+.grid-squares {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  display: inline-block;
+}
