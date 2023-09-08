@@ -16,11 +16,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   background-color: rgb(234, 234, 234);
-  width: 480px;
-  height: 480px;
-}
-
-.grid-squares {
-  width: calc(480px/ 16);
-  height: calc(480px/ 16);
+  width: 680px;
+  height: 680px;
 }
