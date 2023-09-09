@@ -10,8 +10,8 @@ function initializeGrid() {
     gridSquares = document.createElement("div");
     gridSquares.className = "grid-squares";
     mainGrid.appendChild(gridSquares);
-    gridSquares.style.width = `${680 / gridSize}px`;
-    gridSquares.style.height = `${680 / gridSize}px`;
+    gridSquares.style.width = `${960 / gridSize}px`;
+    gridSquares.style.height = `${960 / gridSize}px`;
     gridSquares.addEventListener("mouseover", function () {
       this.style.backgroundColor = "pink";
     });
@@ -20,6 +20,10 @@ function initializeGrid() {
 
 gridSizeBtn.addEventListener("click", function () {
   gridSize = prompt("Select Grid Size 16,32,64,...etc");
-  overallSquares = gridSize * gridSize;
+  if (gridSize < 100) {
+    overallSquares = gridSize * gridSize;
+  } else {
+    alert("Please select a number smaller than 100");
+  }
   initializeGrid();
 });

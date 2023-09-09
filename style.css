@@ -9,13 +9,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 120vh; */
+}
+
+.main-container {
+  display: flex;
 }
 
 .main-grid {
   display: flex;
   flex-wrap: wrap;
   background-color: rgb(234, 234, 234);
-  width: 680px;
-  height: 680px;
+  width: 960px;
+  height: 960px;
 }
