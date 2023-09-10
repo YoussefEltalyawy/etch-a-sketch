@@ -6,27 +6,41 @@ const gridDimensions = 960;
 let gridSquares;
 let gridSize;
 let overallSquares;
+let gridSizeSet = false; // Initialize a flag to track whether grid size is set
 
 function initializeGrid() {
-  for (let i = 0; i < overallSquares; i++) {
-    gridSquares = document.createElement("div");
-    gridSquares.className = "grid-squares";
-    mainGrid.appendChild(gridSquares);
-    gridSquares.style.width = `${gridDimensions / gridSize}px`;
-    gridSquares.style.height = `${gridDimensions / gridSize}px`;
-    gridSquares.addEventListener("mouseover", function () {
-      this.style.backgroundColor = "pink";
-    });
+  if (!gridSizeSet) { // Check if grid size is not already set
+    if (!gridSize) {
+      gridSize = prompt("Select Grid Size (e.g., 16, 32, 64, etc.):");
+      if (gridSize < 100) {
+        overallSquares = gridSize * gridSize;
+        gridSizeSet = true; // Set the flag to indicate grid size is set
+        console.log("Grid size is set.");
+      } else {
+        alert("Please select a number smaller than 100.");
+      }
+    } else {
+      alert("Grid size is already set. Please reset the grid first.");
+    }
+  } else {
+    alert("Grid size is already set. Please reset the grid first.");
+  }
+
+  if (gridSizeSet) {
+    for (let i = 0; i < overallSquares; i++) {
+      gridSquares = document.createElement("div");
+      gridSquares.className = "grid-squares";
+      mainGrid.appendChild(gridSquares);
+      gridSquares.style.width = `${gridDimensions / gridSize}px`;
+      gridSquares.style.height = `${gridDimensions / gridSize}px`;
+      gridSquares.addEventListener("mouseover", function () {
+        this.style.backgroundColor = "#333333";
+      });
+    }
   }
 }
 
 gridSizeBtn.addEventListener("click", function () {
-  gridSize = prompt("Select Grid Size 16,32,64,...etc");
-  if (gridSize < 100) {
-    overallSquares = gridSize * gridSize;
-  } else {
-    alert("Please select a number smaller than 100");
-  }
   initializeGrid();
 });
 
@@ -37,10 +51,10 @@ function resetGrid() {
   gridSquares = 0;
   gridSize = 0;
   overallSquares = 0;
+  gridSizeSet = false; // Reset the flag when the grid is reset
+  console.log("Resetting Grid");
 }
 
 resetGridBtn.addEventListener("click", function () {
-  console.log("Resetting Grid");
   resetGrid();
-}
-);
+});

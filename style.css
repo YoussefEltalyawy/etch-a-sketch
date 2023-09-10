@@ -1,3 +1,4 @@
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +6,7 @@
   font-family: 'Lexend Mega', sans-serif;
 }
 
+/* Body styles */
 body {
   background-color: #fbf5f5;
   display: flex;
@@ -13,21 +15,21 @@ body {
   align-items: center;
 }
 
+/* Header styles */
 h1 {
   letter-spacing: -0.3rem;
   text-align: center;
   font-size: 3rem;
   margin: 2rem auto;
-  justify-content: center;
 }
 
+/* Button styles */
 button {
   background-color: black;
   color: white;
-  
   margin-bottom: 50px;
   font-size: 1.5rem;
-  padding: 1rem;
+  padding: 1.5rem;
   letter-spacing: -0.2rem;
   font-weight: 600;
   z-index: 5;
@@ -42,11 +44,12 @@ button:active {
   background-color: #000000c6;
 }
 
+/* Main container styles */
 .main-container {
   display: flex;
-  
 }
 
+/* Sidebar styles */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -54,6 +57,7 @@ button:active {
   margin-right: 3rem;
 }
 
+/* Main grid styles */
 .main-grid {
   display: flex;
   flex-wrap: wrap;
