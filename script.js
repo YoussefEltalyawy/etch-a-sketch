@@ -2,6 +2,8 @@ const mainGrid = document.querySelector(".main-grid");
 const gridSizeBtn = document.querySelector(".gs-btn");
 const resetGridBtn = document.querySelector(".reset-btn");
 const gridDimensions = 960;
+const colorPickerEl = document.querySelector(".colorPicker");
+// const defultColor = colorPickerEl.value = "#333333";
 
 let gridSquares;
 let gridSize;
@@ -9,7 +11,8 @@ let overallSquares;
 let gridSizeSet = false; // Initialize a flag to track whether grid size is set
 
 function initializeGrid() {
-  if (!gridSizeSet) { // Check if grid size is not already set
+  if (!gridSizeSet) {
+    // Check if grid size is not already set
     if (!gridSize) {
       gridSize = prompt("Select Grid Size (e.g., 16, 32, 64, etc.):");
       if (gridSize < 100) {
@@ -34,15 +37,16 @@ function initializeGrid() {
       gridSquares.style.width = `${gridDimensions / gridSize}px`;
       gridSquares.style.height = `${gridDimensions / gridSize}px`;
       gridSquares.addEventListener("mouseover", function () {
-        this.style.backgroundColor = "#333333";
+        const color = colorPickerEl.value;
+        this.style.backgroundColor = color;
       });
     }
   }
 }
 
-gridSizeBtn.addEventListener("click", function () {
-  initializeGrid();
-});
+// function discoMode {
+
+// }
 
 function resetGrid() {
   while (mainGrid.firstChild) {
@@ -54,6 +58,10 @@ function resetGrid() {
   gridSizeSet = false; // Reset the flag when the grid is reset
   console.log("Resetting Grid");
 }
+
+gridSizeBtn.addEventListener("click", function () {
+  initializeGrid();
+});
 
 resetGridBtn.addEventListener("click", function () {
   resetGrid();
