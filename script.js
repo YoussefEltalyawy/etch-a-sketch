@@ -3,12 +3,15 @@ const gridSizeBtn = document.querySelector(".gs-btn");
 const resetGridBtn = document.querySelector(".reset-btn");
 const gridDimensions = 960;
 const colorPickerEl = document.querySelector(".colorPicker");
-// const defultColor = colorPickerEl.value = "#333333";
+const colorModeBtn = document.querySelector(".color-btn");
+const discoModeBtn = document.querySelector(".disco-btn");
 
 let gridSquares;
 let gridSize;
 let overallSquares;
 let gridSizeSet = false; // Initialize a flag to track whether grid size is set
+let color;
+let currentMode = "color";
 
 function initializeGrid() {
   if (!gridSizeSet) {
@@ -18,7 +21,6 @@ function initializeGrid() {
       if (gridSize < 100) {
         overallSquares = gridSize * gridSize;
         gridSizeSet = true; // Set the flag to indicate grid size is set
-        console.log("Grid size is set.");
       } else {
         alert("Please select a number smaller than 100.");
       }
@@ -37,16 +39,19 @@ function initializeGrid() {
       gridSquares.style.width = `${gridDimensions / gridSize}px`;
       gridSquares.style.height = `${gridDimensions / gridSize}px`;
       gridSquares.addEventListener("mouseover", function () {
-        const color = colorPickerEl.value;
-        this.style.backgroundColor = color;
+        if (currentMode == "color") {
+          color = colorPickerEl.value;
+          this.style.backgroundColor = color;
+        }
+        else if (currentMode == "disco") {
+          randomColorGenerator()
+          // color = randomColor
+          this.style.backgroundColor = color;
+        }
       });
     }
   }
 }
-
-// function discoMode {
-
-// }
 
 function resetGrid() {
   while (mainGrid.firstChild) {
@@ -56,11 +61,36 @@ function resetGrid() {
   gridSize = 0;
   overallSquares = 0;
   gridSizeSet = false; // Reset the flag when the grid is reset
-  console.log("Resetting Grid");
+}
+
+function colorMode() {
+  currentMode = "color";
+}
+
+function discoMode() {
+  currentMode = "disco";
+}
+
+function randomColorGenerator() {
+  let redValue = Math.floor(Math.random() * 256);
+  let greenValue = Math.floor(Math.random() * 256);
+  let blueValue = Math.floor(Math.random() * 256);
+
+  let randomColor = "rgb(" + redValue + "," + greenValue + "," + blueValue + ")";
+  color = randomColor;
 }
 
 gridSizeBtn.addEventListener("click", function () {
   initializeGrid();
+});
+
+colorModeBtn.addEventListener("click", function () {
+  colorMode();
+});
+
+discoModeBtn.addEventListener("click", function () {
+  discoMode();
+  randomColorGenerator();
 });
 
 resetGridBtn.addEventListener("click", function () {
